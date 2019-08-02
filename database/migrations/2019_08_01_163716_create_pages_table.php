@@ -18,7 +18,6 @@ class CreatePagesTable extends Migration
             $table->integer('directory_id');
             $table->longText('contents')->nullable();
             $table->string('http_status')->nullable();
-            $table->json('scrape_log');
             $table->json('meta');
             $table->timestamps();
         });

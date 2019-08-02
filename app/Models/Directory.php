@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Directory extends Model
 {
-    //
+    protected $casts = ['meta' => 'array'];
+
+    protected $attributes = ['meta' => '{}'];
 }
