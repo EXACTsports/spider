@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="367cac74-a605-44ea-a755-7e773cbbe956" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Actions/ParseDirectory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/ParseDirectory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_01_163647_create_contacts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_01_163647_create_contacts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SidearmParserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/SidearmParserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +184,7 @@
       <option name="presentableId" value="Default" />
       <updated>1564677266210</updated>
       <workItem from="1564677268010" duration="12966000" />
-      <workItem from="1564714386493" duration="5949000" />
+      <workItem from="1564714386493" duration="11457000" />
     </task>
     <servers />
   </component>

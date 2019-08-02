@@ -22,6 +22,8 @@ class CreateContactsTable extends Migration
             $table->string('title')->nullable();
             $table->string('phone')->nullable();
             $table->string('image_url')->nullable();
+            $table->string('profile_url')->nullable();
+            $table->text('bio')->nullable();
             $table->string('sport')->nullable();
             $table->string('gender')->nullable();
             $table->json('meta');
