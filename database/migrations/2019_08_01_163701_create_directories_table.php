@@ -19,7 +19,7 @@ class CreateDirectoriesTable extends Migration
             $table->uuid('uuid');
             $table->string('url');
             $table->timestamp('crawled_at')->nullable();
-            $table->string('extraction_method')->default('default');
+            $table->json('meta');
             $table->timestamps();
             $table->softDeletes();
         });
