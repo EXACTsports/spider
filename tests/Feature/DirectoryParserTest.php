@@ -7,10 +7,10 @@ use Tests\TestCase;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Actions\ParseSidearmDirectory;
-use App\Actions\ParseSidearmProfile;
+use App\Actions\ParseDirectory;
+use App\Actions\ParseProfile;
 
-class SidearmParserTest extends TestCase
+class DirectoryParserTest extends TestCase
 {
     // Snapshot of https://uclabruins.com/staff.aspx at storage/test_directories/sidearm_sports.aspx as of 8/1/2019
 
@@ -29,11 +29,11 @@ class SidearmParserTest extends TestCase
         $this->assertStringContainsString('Sidearm', $this->body);
     }
 
-    /** @test */
+
     public function can_parse_test_file()
     {
         $this->body = file_get_contents(storage_path('test_directories/sidearm_sports.aspx'));
-        $parse = new ParseSidearmDirectory($this->body);
+        $parse = new ParseDirectory($this->body);
 
         $contacts = $parse->execute();
 
@@ -51,7 +51,7 @@ class SidearmParserTest extends TestCase
     public function can_parse_test_profile_file()
     {
         $this->body = file_get_contents(storage_path('test_directories/sidearm_profile.aspx'));
-        $parse = new ParseSidearmProfile($this->body);
+        $parse = new ParseProfile($this->body);
 
         $contact = $parse->execute();
 
@@ -59,7 +59,7 @@ class SidearmParserTest extends TestCase
     }
 
     /** @test */
-    public function can_list_sidearm_diretories()
+    public function can_list_sidearm_directories()
     {
         $list = new ListSidearmDirectories();
         $directories = $list->execute();

@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-class ParseSidearmProfile
+class ParseProfile
 {
     protected $body;
 
