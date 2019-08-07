@@ -18,6 +18,8 @@ jobs:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circleci .env
 
+      -run: apt install php7.3-bcmath
+
       - run:
           name: Update composer to latest version
           command: sudo composer self-update
