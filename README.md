@@ -1,8 +1,8 @@
-https://app.chipperci.com/projects/f1b67b90-787b-48e1-8107-17c06c2dc03e/status/master
+![Chipper CI](https://app.chipperci.com/projects/f1b67b90-787b-48e1-8107-17c06c2dc03e/status/master)
 # Directory Spider
 Crawl college directories regularly via AWS Lambda, populate a database of contacts, and provide  a standardized API for our other sites to use to keep their coaching staff records up to date. It works by fetching a copy of the directory and passing the resulting HTML through extractor classes to collect contact information and classify contacts as coaches.
 ### Creating A New Extractor
-A directory extractor is an invokable class that we pass the HTML of a directory page to in hopes that it will extract the contact information from the page and allow us to classify the contacts as coaches (identifying team, title, etc.). Every scraped directory page is passed through all extractors and we use the one that gives the best results (most correctly identified and classified coaches). To get as close to 100% automation of our master college coach directory as possible, we have made it easy to add new extractors to the process.
+A directory extractor is a class that we pass the HTML of a directory or page to in hopes that it will extract the contact information from the page and allow us to classify the contacts as coaches (identifying team, title, etc.). Every scraped directory page is passed through all extractors and we use the one that gives the best results (most correctly identified and classified coaches). To get as close to 100% automation of our master college coach directory as possible, we have made it easy to add new extractors to the process.
 
 To create a new extractor, run this command: `php artisan make:extractor` and answer the three questions you are presented with:
 1. The name of the college whose directory you are working with.
