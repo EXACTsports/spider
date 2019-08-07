@@ -29,7 +29,6 @@ class UniversityOfCaliforniaLosAngelesProfileTest extends TestCase
         $extract = new UniversityOfCaliforniaLosAngelesProfile($dom);
         $extract->execute();
 
-
         $this->assertInstanceOf('App\Models\DirectoryContact', $extract->contact);
         $this->assertEquals(10261, strlen($extract->contact->bio));
         $this->assertEquals('/images/2018/6/20/COACH_Peters_1_1_of_1_.jpg', $extract->contact->image_url);

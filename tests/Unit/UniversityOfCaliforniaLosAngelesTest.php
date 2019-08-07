@@ -31,12 +31,7 @@ class UniversityOfCaliforniaLosAngelesTest extends TestCase
 
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
-        $this->assertGreaterThan(78, $extract->contacts->where('email', '<>', '')->count());
-        $this->assertGreaterThan(30, $extract->meta->count());
-
-        // Do your own assertion(s) based on the actual contents of the file you are parsing.
-
-
-
+        $this->assertEquals(257, $extract->contacts->where('email', '<>', '')->count());
+        $this->assertEquals(39, count($extract->meta['team_phones']));
     }
 }
