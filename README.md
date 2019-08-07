@@ -4,15 +4,20 @@ Crawl college directories regularly via AWS Lambda, populate a database of conta
 ### Creating A New Extractor
 A directory extractor is an invokable class that we pass the HTML of a directory page to in hopes that it will extract the contact information from the page and allow us to classify the contacts as coaches (identifying team, title, etc.). Every scraped directory page is passed through all extractors and we use the one that gives the best results (most correctly identified and classified coaches). To get as close to 100% automation of our master college coach directory as possible, we have made it easy to add new extractors to the process.
 
-To create a new extractor, run this command: `php artisan make:extractor {ExtractorName}`
+To create a new extractor, run this command: `php artisan make:extractor` and answer the three questions you are presented with:
+1. The name of the college whose directory you are working with.
+2. The URL of the directory or profile page you are working with.
+3. Whether the page you are working with is a profile page.
 
 This will result in the creation of three files:
 
-`App/Actions/Extractors/{ExtractorName}.php` - The invokable extractor class stubbed out with expected parameters and return.
+`App/Actions/Extractors/{ExtractorName}.php` - The extractor class stubbed out with expected parameters and return.
 
 `tests/Unit/{ExtractorName}Test.php` - A test class with the tests stubbed out. They should fail when you run phpunit until you compete the logic in the extractor class.
 
 `storage/test_pages/{ExtractorName}.html` - A blank file into which you will paste the source of a directory page that will be parsed using the extractor that you are creating.
+
+This system also creates a new git branch at {ExtractorName} (after pulling the master branch down to make sure you're up to date), checks it out, and pushes it to remote.
 
 After you paste the source of the page you want to extract into the test directories file created during the creation process, the process is pretty straightforward:
 
@@ -21,7 +26,7 @@ After you paste the source of the page you want to extract into the test directo
 3. Write the logic into the __invoke() function required to extract the contact data from the source of the test page.
 4. Ensure the test passes.
 5. Refactor the extractor to ensure the code is readable (no deep recursions, etc.) and keep running the test to make sure it passes.
-6. When you are confident that you have a working extractor, submit a pull request so it can be reviewed and merged in.
+6. When you are confident that you have a working extractor push your work to remote. If it passes StyleCI and ChipperCI, click the button to submit a pull request. Otherwise, make the fixes required to get it to pass all CI checks and then submit the pull request.
 
 #### Requirements for an Extractor
 These are the fields we want to gather from the directory for each coach:
