@@ -21,7 +21,7 @@ class UniversityOfCaliforniaLosAngeles extends BaseExtractor
 
     public function execute()
     {
-        $meta = collect([]);
+        $team_phones = [];
         $contacts = collect([]);
         foreach ($this->dom->getElementsByTagName('tr') as $row) {
             $contact = new Contact;
@@ -32,8 +32,7 @@ class UniversityOfCaliforniaLosAngeles extends BaseExtractor
                 $contact['profile_url'] = $headers[0]->getElementsByTagName('a')[0]->getAttribute('href') ?? '';
             }
             if (preg_match('/phone/i', $headers[0]->textContent)) {
-                $meta->push($this->clean($headers[0]->textContent));
-
+                array_push($team_phones, $this->clean($headers[0]->textContent));
             }
             $contact['name'] = $this->clean($headers[0]->getElementsByTagName('a')[0]->textContent ?? '');
             foreach ($cells as $cell) {
@@ -54,7 +53,7 @@ class UniversityOfCaliforniaLosAngeles extends BaseExtractor
             $contacts->push($contact);
         }
 
-        $this->meta = $meta;
+        $this->meta = collect(['team_phones' => $team_phones]);
         $this->contacts = $contacts;
     }
 }

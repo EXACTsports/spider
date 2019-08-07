@@ -2,7 +2,8 @@
 
 namespace App\Actions;
 use Spatie\Browsershot\Browsershot;
-use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class CreateExtractor
 {
@@ -18,20 +19,39 @@ class CreateExtractor
         $this->name = $name;
         $this->url = $url;
         $this->is_profile = $is_profile;
-        $this->message = 'Pending...';
+        $this->message = '';
         $this->status = 'pending';
+        $this->results = collect([]);
 
         foreach (glob(__DIR__.'/Extractors/*.php') as $file) {
             $extractors[] = basename($file, '.php');
         }
         $this->extractors = $extractors;
+
     }
 
     public function execute()
     {
+        $commands = ['git pull', 'git checkout -b ' . $this->name, 'git push origin ' . $this->name, 'git branch -a'];
+        foreach ($commands as $command) {
+            $process = new Process(
+                $command
+            );
+            $process->run();
+
+            $this->results->push($process->getOutput());
+
+            // executes after the command finishes
+            if (!$process->isSuccessful()) {
+                throw new ProcessFailedException($process);
+            }
+        }
+
+
+
         if (in_array($this->name, $this->extractors)) {
             $this->status = 'error';
-            $this->message = 'An extractor named ' . $this->name . ' already exists.';
+            $this->message .= 'An extractor named ' . $this->name . ' already exists.';
             return;
         }
 
@@ -48,7 +68,7 @@ class CreateExtractor
         file_put_contents(base_path('tests/Unit/' . $this->name . 'Test.php'), $stubtest);
 
 
-        $this->message = 'Extractor created at App/Actions/Extractors/' . $this->name . '.php and test created at tests/Unit/' . $this->name . 'Test.php';
+        $this->message .= 'Extractor created at App/Actions/Extractors/' . $this->name . '.php and test created at tests/Unit/' . $this->name . 'Test.php';
         $this->status = 'done';
 
     }
