@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - checkout
-      - run: apt install php7.3-bcmath
+      - run: sudo apt install php7.3-bcmath
 
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
