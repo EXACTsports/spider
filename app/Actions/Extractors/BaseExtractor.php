@@ -12,6 +12,11 @@ class BaseExtractor
         return trim(preg_replace($pattern, $replace, $string));
     }
 
+    public function clean_phone($string)
+    {
+        return preg_replace('/[^0-9]/', '', $string);
+    }
+
     public function is_title($string)
     {
         $title_keys = ['/coach/i', '/assistant/i', '/director/i', '/volunteer/i', '/scouting/i', '/coordinator/i'];
