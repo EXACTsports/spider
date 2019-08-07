@@ -30,7 +30,7 @@ class UniversityOfCaliforniaLosAngelesProfileTest extends TestCase
         $extract->execute();
 
         $this->assertInstanceOf('App\Models\DirectoryContact', $extract->contact);
-        $this->assertEquals(10261, strlen($extract->contact->bio));
+        $this->assertGreaterThan(10000, strlen($extract->contact->bio)); // Don't do exact number because of variations in results of PHP Tidy cleanup
         $this->assertEquals('/images/2018/6/20/COACH_Peters_1_1_of_1_.jpg', $extract->contact->image_url);
     }
 }
