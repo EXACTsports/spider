@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="367cac74-a605-44ea-a755-7e773cbbe956" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/CreateExtractor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/CreateExtractor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Extractors/UniversityOfCaliforniaLosAngeles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Extractors/UniversityOfCaliforniaLosAngeles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/UniversityOfCaliforniaLosAngelesProfileTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/UniversityOfCaliforniaLosAngelesProfileTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/UniversityOfCaliforniaLosAngelesTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/UniversityOfCaliforniaLosAngelesTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.circleci/config.yml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +186,7 @@
       <workItem from="1564677268010" duration="12966000" />
       <workItem from="1564714386493" duration="38427000" />
       <workItem from="1565116041902" duration="13242000" />
-      <workItem from="1565189376861" duration="2643000" />
+      <workItem from="1565189376861" duration="2832000" />
     </task>
     <servers />
   </component>
