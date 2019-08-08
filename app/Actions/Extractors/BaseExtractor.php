@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Actions\Extractors;
+
 use DOMElement;
 
 class BaseExtractor
@@ -9,6 +10,7 @@ class BaseExtractor
     {
         $pattern = ['/"/', '/\n/'];
         $replace = ['', ' '];
+
         return trim(preg_replace($pattern, $replace, $string));
     }
 
@@ -26,16 +28,16 @@ class BaseExtractor
                 return true;
             }
         }
+
         return false;
     }
 
     public function inner_html(DOMElement $element)
     {
         $html = '';
-        $children  = $element->childNodes;
+        $children = $element->childNodes;
 
-        foreach ($children as $child)
-        {
+        foreach ($children as $child) {
             $html .= $element->ownerDocument->saveHTML($child);
         }
 

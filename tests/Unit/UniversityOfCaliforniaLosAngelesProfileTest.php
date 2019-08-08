@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
+use DomDocument;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use DomDocument;
 use App\Actions\Extractors\UniversityOfCaliforniaLosAngelesProfile;
 
 class UniversityOfCaliforniaLosAngelesProfileTest extends TestCase

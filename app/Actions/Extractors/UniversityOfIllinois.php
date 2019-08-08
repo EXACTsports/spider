@@ -2,9 +2,9 @@
 
 namespace App\Actions\Extractors;
 
+use DomDocument;
 use App\Models\Directory;
 use App\Models\DirectoryContact as Contact;
-use DomDocument;
 
 class UniversityOfIllinois extends BaseExtractor
 {
@@ -29,23 +29,20 @@ class UniversityOfIllinois extends BaseExtractor
                     $line = preg_replace('/\);/', '', $line);
                     $line = preg_replace('/\'/', '', $line);
                     $sports[] = explode(', ', $line);
-
                 }
             }
         }
 
         $blocks = [];
         foreach ($sports as $sport) {
-            if (sizeof($sport) > 3) {
+            if (count($sport) > 3) {
                 $blocks[$sport[3]] = $sport[0];
             }
         }
 
-
         $i = -1;
         $meta = 'Administration';
         foreach ($this->dom->getElementsByTagName('table') as $table) {
-
             if ($table->getAttribute('id') == 'ctl00_cplhMainContent_dgrdStaff') {
                 foreach ($table->getElementsByTagName('tr') as $row) {
                     $meta = isset($blocks[$i]) ? $blocks[$i] : $meta;
@@ -76,16 +73,13 @@ class UniversityOfIllinois extends BaseExtractor
                         }
                     }
 
-                    if (isset($contact->email) && !empty($contact->email)) {
+                    if (isset($contact->email) && ! empty($contact->email)) {
                         $contacts->push($contact);
                     }
-
                 }
             }
         }
 
-
         $this->contacts = $contacts;
-
     }
 }

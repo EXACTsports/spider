@@ -9,7 +9,6 @@ class ListSidearmDirectories extends Command
 {
     protected $signature = 'list:sidearm';
 
-
     public function __construct()
     {
         parent::__construct();
