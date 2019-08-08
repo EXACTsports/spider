@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Actions;
+
 use Spatie\Browsershot\Browsershot;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class CreateExtractor
 {
@@ -27,12 +28,11 @@ class CreateExtractor
             $extractors[] = basename($file, '.php');
         }
         $this->extractors = $extractors;
-
     }
 
     public function execute()
     {
-        $commands = ['git pull', 'git checkout -b ' . $this->name, 'git push origin ' . $this->name, 'git branch -a'];
+        $commands = ['git pull', 'git checkout -b '.$this->name, 'git push origin '.$this->name, 'git branch -a'];
         foreach ($commands as $command) {
             $process = new Process(
                 $command
@@ -42,16 +42,15 @@ class CreateExtractor
             $this->results->push($process->getOutput());
 
             // executes after the command finishes
-            if (!$process->isSuccessful()) {
+            if (! $process->isSuccessful()) {
                 throw new ProcessFailedException($process);
             }
         }
 
-
-
         if (in_array($this->name, $this->extractors)) {
             $this->status = 'error';
-            $this->message .= 'An extractor named ' . $this->name . ' already exists.';
+            $this->message .= 'An extractor named '.$this->name.' already exists.';
+
             return;
         }
 
@@ -61,15 +60,13 @@ class CreateExtractor
         $stub = file_get_contents(__DIR__.'/Extractors/Stub');
 
         $stub = preg_replace('/STUB/', $this->name, $stub);
-        file_put_contents(__DIR__.'/Extractors/' . $this->name . '.php', $stub);
+        file_put_contents(__DIR__.'/Extractors/'.$this->name.'.php', $stub);
 
         $stubtest = file_get_contents(base_path('tests/Unit/STUB'));
         $stubtest = preg_replace('/STUB/', $this->name, $stubtest);
-        file_put_contents(base_path('tests/Unit/' . $this->name . 'Test.php'), $stubtest);
+        file_put_contents(base_path('tests/Unit/'.$this->name.'Test.php'), $stubtest);
 
-
-        $this->message .= 'Extractor created at App/Actions/Extractors/' . $this->name . '.php and test created at tests/Unit/' . $this->name . 'Test.php';
+        $this->message .= 'Extractor created at App/Actions/Extractors/'.$this->name.'.php and test created at tests/Unit/'.$this->name.'Test.php';
         $this->status = 'done';
-
     }
 }

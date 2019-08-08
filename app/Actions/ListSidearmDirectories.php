@@ -2,8 +2,6 @@
 
 namespace App\Actions;
 
-
-
 class ListSidearmDirectories
 {
     protected $import_file;

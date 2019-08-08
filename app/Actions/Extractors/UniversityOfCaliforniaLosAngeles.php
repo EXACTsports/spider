@@ -2,10 +2,10 @@
 
 namespace App\Actions\Extractors;
 
-use App\Actions\Extractors\BaseExtractor;
-use App\Models\Directory;
-use App\Models\DirectoryContact as Contact;
 use DomDocument;
+use App\Models\Directory;
+use App\Actions\Extractors\BaseExtractor;
+use App\Models\DirectoryContact as Contact;
 
 class UniversityOfCaliforniaLosAngeles extends BaseExtractor
 {
@@ -27,7 +27,7 @@ class UniversityOfCaliforniaLosAngeles extends BaseExtractor
             $contact = new Contact;
             $headers = $row->getElementsByTagName('th');
             $cells = $row->getElementsByTagName('td');
-            if (!is_null($headers[0]->getElementsByTagName('a')[0])) {
+            if (! is_null($headers[0]->getElementsByTagName('a')[0])) {
                 $contact['meta'] = $headers[0]->getElementsByTagName('a')[0]->getAttribute('aria-label') ?? '';
                 $contact['profile_url'] = $headers[0]->getElementsByTagName('a')[0]->getAttribute('href') ?? '';
             }
