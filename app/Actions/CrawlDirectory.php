@@ -2,8 +2,8 @@
 
 namespace App\Actions;
 
-use Spatie\Browsershot\Browsershot;
 use App\Models\Directory;
+use Spatie\Browsershot\Browsershot;
 use Spatie\QueueableAction\QueueableAction;
 
 class CrawlDirectory
@@ -19,6 +19,7 @@ class CrawlDirectory
     {
         $this->id = $id;
     }
+
     public function execute()
     {
         $directory = Directory::findOrFail($this->id);
@@ -34,8 +35,7 @@ class CrawlDirectory
     {
         $html = Browsershot::url($url)->bodyHtml();
         Browsershot::html($html)->savePdf(storage_path('pdf/'.md5($url).'.pdf'));
+
         return $html;
     }
-
-
 }

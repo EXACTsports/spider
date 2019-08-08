@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Actions\CreateExtractor;
-use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Illuminate\Console\Command;
+use App\Actions\CreateExtractor;
 
 class MakeExtractor extends Command
 {
@@ -54,8 +54,7 @@ class MakeExtractor extends Command
 
         if ($extractor->status == 'error') {
             $this->error($extractor->message);
-        }
-        else {
+        } else {
             $this->info($extractor->message);
         }
     }

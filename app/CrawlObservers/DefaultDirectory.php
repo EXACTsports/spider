@@ -2,13 +2,10 @@
 
 namespace App\CrawlObservers;
 
-use GuzzleHttp\Exception\RequestException;
-use Psr\Http\Message\ResponseInterface;
+use Spatie\Crawler\CrawlObserver;
 use Psr\Http\Message\UriInterface;
-use \Spatie\Crawler\CrawlObserver;
-
-
-
+use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Exception\RequestException;
 
 class DefaultDirectory extends CrawlObserver
 {
@@ -18,6 +15,7 @@ class DefaultDirectory extends CrawlObserver
     {
         $this->directory_id = $directory_id;
     }
+
     /**
      * Called when the crawler will crawl the url.
      *
@@ -25,12 +23,10 @@ class DefaultDirectory extends CrawlObserver
      */
     public function willCrawl(UriInterface $url)
     {
-
     }
 
-
-    public function finishedCrawling() {
-
+    public function finishedCrawling()
+    {
     }
 
     /**
@@ -43,7 +39,6 @@ class DefaultDirectory extends CrawlObserver
     public function crawled(UriInterface $url, ResponseInterface $response, ?UriInterface $foundOnUrl = null)
     {
         $body = $response->getBody()->getContents();
-
     }
 
     /**
@@ -63,5 +58,4 @@ class DefaultDirectory extends CrawlObserver
     {
         return $this->baseUrl->getHost() === $url->getHost();
     }
-
 }
