@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
+use DomDocument;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use DomDocument;
 use App\Actions\Extractors\UniversityOfCaliforniaLosAngeles;
 
 class UniversityOfCaliforniaLosAngelesTest extends TestCase
@@ -28,7 +28,6 @@ class UniversityOfCaliforniaLosAngelesTest extends TestCase
 
         $extract = new UniversityOfCaliforniaLosAngeles($dom);
         $extract->execute();
-
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
         $this->assertEquals(257, $extract->contacts->where('email', '<>', '')->count());

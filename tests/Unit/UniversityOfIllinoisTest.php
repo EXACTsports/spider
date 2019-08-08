@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use DomDocument;
+use Tests\TestCase;
 use App\Actions\Extractors\UniversityOfIllinois;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UniversityOfIllinoisTest extends TestCase
 {
@@ -29,12 +29,9 @@ class UniversityOfIllinoisTest extends TestCase
         $extract = new UniversityOfIllinois($dom);
         $extract->execute();
 
-
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
         $this->assertGreaterThan(300, $extract->contacts->count());
 
         // Do your own assertion(s) based on the actual contents of the file you are parsing.
-
-
     }
 }

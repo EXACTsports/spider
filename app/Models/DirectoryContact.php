@@ -9,6 +9,6 @@ class DirectoryContact extends Model
     protected $attributes = [
         'name' => '',
         'email' => '',
-        'phone' => ''
+        'phone' => '',
     ];
 }
