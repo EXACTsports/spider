@@ -4,15 +4,15 @@ namespace Tests\Unit;
 
 use DomDocument;
 use Tests\TestCase;
+use App\Actions\Extractors\UniversityOfIllinois;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Actions\Extractors\UniversityOfCaliforniaLosAngeles;
 
-class UniversityOfCaliforniaLosAngelesTest extends TestCase
+class UniversityOfIllinoisTest extends TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
-        $this->body = file_get_contents(storage_path('test_pages/UniversityOfCaliforniaLosAngeles.html'));
+        $this->body = file_get_contents(storage_path('test_pages/UniversityOfIllinois.html'));
         $this->tidy_config = ['clean' => 'yes', 'output-html' => 'yes'];
     }
 
@@ -26,11 +26,12 @@ class UniversityOfCaliforniaLosAngelesTest extends TestCase
 
         $dom->loadHTML($html);
 
-        $extract = new UniversityOfCaliforniaLosAngeles($dom);
+        $extract = new UniversityOfIllinois($dom);
         $extract->execute();
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
-        $this->assertEquals(257, $extract->contacts->where('email', '<>', '')->count());
-        $this->assertEquals(39, count($extract->meta['team_phones']));
+        $this->assertGreaterThan(300, $extract->contacts->count());
+
+        // Do your own assertion(s) based on the actual contents of the file you are parsing.
     }
 }

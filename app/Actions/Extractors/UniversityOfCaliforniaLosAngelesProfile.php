@@ -2,9 +2,9 @@
 
 namespace App\Actions\Extractors;
 
+use DomDocument;
 use App\Models\Directory;
 use App\Models\DirectoryContact as Contact;
-use DomDocument;
 
 class UniversityOfCaliforniaLosAngelesProfile extends BaseExtractor
 {
