@@ -1,4 +1,5 @@
 ![Chipper CI](https://app.chipperci.com/projects/f1b67b90-787b-48e1-8107-17c06c2dc03e/status/master)
+[![StyleCI](https://github.styleci.io/repos/200163522/shield?branch=master)](https://github.styleci.io/repos/200163522)
 # Directory Spider
 Crawl college directories regularly via AWS Lambda, populate a database of contacts, and provide  a standardized API for our other sites to use to keep their coaching staff records up to date. It works by fetching a copy of the directory and passing the resulting HTML through extractor classes to collect contact information and classify contacts as coaches.
 ### Creating A New Extractor
