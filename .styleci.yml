@@ -6,6 +6,7 @@ php:
     not-name:
       - index.php
       - server.php
+      - _ide_helper.php
 js:
   finder:
     not-name:
