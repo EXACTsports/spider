@@ -75,6 +75,6 @@ class CreateExtractor
     public function generateName()
     {
         $faker = new Generator();
-        $this->name = Str::studly($faker->firstNameMale . $faker->city . $faker->firstNameFemale);
+        $this->name = Str::studly($faker->firstNameMale.$faker->city.$faker->firstNameFemale);
     }
 }
