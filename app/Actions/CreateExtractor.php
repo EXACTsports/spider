@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use Faker\Generator;
+use Illuminate\Support\Str;
 use Spatie\Browsershot\Browsershot;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -68,5 +70,11 @@ class CreateExtractor
 
         $this->message .= 'Extractor created at App/Actions/Extractors/'.$this->name.'.php and test created at tests/Unit/'.$this->name.'Test.php';
         $this->status = 'done';
+    }
+
+    public function generateName()
+    {
+        $faker = new Generator();
+        $this->name = Str::studly($faker->firstNameMale . $faker->city . $faker->firstNameFemale);
     }
 }

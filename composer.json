@@ -15,7 +15,7 @@
         "fideloper/proxy": "^4.0",
         "html2text/html2text": "^4.2",
         "jenssegers/model": "^1.2",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "^6",
         "laravel/tinker": "^1.0",
         "moontoast/math": "^1.1",
         "spatie/browsershot": "^3.32",
