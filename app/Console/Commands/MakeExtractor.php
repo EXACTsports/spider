@@ -39,10 +39,7 @@ class MakeExtractor extends Command
      */
     public function handle(): void
     {
-
         $url = $this->ask('Paste the URL of the page you want to use as a test for your extractor here:');
-
-
 
         $extractor = new CreateExtractor($url);
         $extractor->execute();
@@ -51,7 +48,7 @@ class MakeExtractor extends Command
             $this->error($extractor->message);
         } else {
             $this->table(['Type Of File', 'Path To File'], $extractor->files);
-            $this->info('You should now be on git branch ' . $extractor->name . '. Run `git status` to verify.');
+            $this->info('You should now be on git branch '.$extractor->name.'. Run `git status` to verify.');
         }
     }
 }
