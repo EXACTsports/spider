@@ -5,8 +5,8 @@ namespace App\Actions;
 use Faker\Factory;
 use Illuminate\Support\Str;
 use Spatie\Browsershot\Browsershot;
-use Spatie\Browsershot\Exceptions\CouldNotTakeBrowsershot;
 use Symfony\Component\Process\Process;
+use Spatie\Browsershot\Exceptions\CouldNotTakeBrowsershot;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class CreateExtractor
@@ -56,11 +56,9 @@ class CreateExtractor
             }
         }
 
-
-
         $html = Browsershot::url($this->url)->bodyHtml();
         try {
-            Browsershot::html($html)->save(storage_path('pdf/' . $this->name . '.pdf'));
+            Browsershot::html($html)->save(storage_path('pdf/'.$this->name.'.pdf'));
         } catch (CouldNotTakeBrowsershot $e) {
             $this->status = 'error';
             $this->message = $e->getMessage();
@@ -84,12 +82,12 @@ class CreateExtractor
     public function generateName()
     {
         $faker = Factory::create();
-        $this->name = Str::studly($faker->firstName() . $faker->city );
+        $this->name = Str::studly($faker->firstName().$faker->city);
 
         $this->files = [
-            ['Extractor Class', 'App/Actions/Extractors/' . $this->name . '.php'],
-            ['Test To Write', 'tests/Unit/' . $this->name . 'Test.php'],
-            ['Source To Scrape', 'storage/test_pages/' . $this->name . '.html']
+            ['Extractor Class', 'App/Actions/Extractors/'.$this->name.'.php'],
+            ['Test To Write', 'tests/Unit/'.$this->name.'Test.php'],
+            ['Source To Scrape', 'storage/test_pages/'.$this->name.'.html'],
         ];
     }
 }
