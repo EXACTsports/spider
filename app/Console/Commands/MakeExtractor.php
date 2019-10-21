@@ -37,25 +37,21 @@ class MakeExtractor extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
-        $name = $this->ask('What is the name of the school you are using to develop this extractor?');
+
         $url = $this->ask('Paste the URL of the page you want to use as a test for your extractor here:');
-        $is_profile = false;
-        if ($this->confirm('Is this a profile page?')) {
-            $is_profile = true;
-            $name .= ' Profile';
-        }
 
-        $name = Str::studly($name);
 
-        $extractor = new CreateExtractor($name, $url, $is_profile);
+
+        $extractor = new CreateExtractor($url);
         $extractor->execute();
 
         if ($extractor->status == 'error') {
             $this->error($extractor->message);
         } else {
-            $this->info($extractor->message);
+            $this->table(['Type Of File', 'Path To File'], $extractor->files);
+            $this->info('You should now be on git branch ' . $extractor->name . '. Run `git status` to verify.');
         }
     }
 }

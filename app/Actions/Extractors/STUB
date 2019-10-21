@@ -6,6 +6,11 @@ use App\Models\Directory;
 use App\Models\DirectoryContact as Contact;
 use DomDocument;
 
+/**
+ * Do not edit or remove comment:
+ * Extractor Based On: URL
+ */
+
 class STUB
 {
     public $contacts;

@@ -7,6 +7,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use DomDocument;
 use App\Actions\Extractors\STUB;
 
+/**
+ * Do not edit or remove comment:
+ * Extractor Based On: URL
+ */
 class STUBTest extends TestCase
 {
     public function setUp(): void
