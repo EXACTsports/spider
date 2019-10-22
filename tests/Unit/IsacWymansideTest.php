@@ -2,17 +2,21 @@
 
 namespace Tests\Unit;
 
-use DomDocument;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Actions\Extractors\UniversityOfCaliforniaLosAngeles;
+use DomDocument;
+use App\Actions\Extractors\IsacWymanside;
 
-class UniversityOfCaliforniaLosAngelesTest extends TestCase
+/**
+ * Do not edit or remove comment:
+ * Extractor Based On: https://uclabruins.com/staff.aspx
+ */
+class IsacWymansideTest extends TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
-        $this->body = file_get_contents(storage_path('test_pages/UniversityOfCaliforniaLosAngeles.html'));
+        $this->body = file_get_contents(storage_path('test_pages/IsacWymanside.html'));
         $this->tidy_config = ['clean' => 'yes', 'output-html' => 'yes'];
     }
 
@@ -26,11 +30,13 @@ class UniversityOfCaliforniaLosAngelesTest extends TestCase
 
         $dom->loadHTML($html);
 
-        $extract = new UniversityOfCaliforniaLosAngeles($dom);
+        $extract = new IsacWymanside($dom, 'https://uclabruins.com/staff.aspx');
         $extract->execute();
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
-        $this->assertEquals(257, $extract->contacts->where('email', '<>', '')->count());
-        $this->assertEquals(39, count($extract->meta['team_phones']));
+        $this->assertEquals(268, $extract->contacts->where('email', '<>', '')->count());
+        $this->assertEquals(40, count($extract->meta['team_phones']));
+
+
     }
 }

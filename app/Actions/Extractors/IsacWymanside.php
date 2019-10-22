@@ -2,21 +2,26 @@
 
 namespace App\Actions\Extractors;
 
-use DomDocument;
 use App\Models\Directory;
-use App\Actions\Extractors\BaseExtractor;
 use App\Models\DirectoryContact as Contact;
+use DomDocument;
 
-class UniversityOfCaliforniaLosAngeles extends BaseExtractor
+/**
+ * Do not edit or remove comment:
+ * Extractor Based On: https://uclabruins.com/staff.aspx
+ */
+
+class IsacWymanside extends BaseExtractor
 {
     public $contacts;
-    public $meta;
-
     protected $dom;
 
-    public function __construct(DomDocument $dom)
+    public function __construct(DomDocument $dom, $url = null)
     {
+        $this->contacts = collect([]);
         $this->dom = $dom;
+        $this->url = $url;
+        $this->fullyQualify();
     }
 
     public function execute()
