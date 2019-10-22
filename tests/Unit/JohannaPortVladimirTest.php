@@ -2,17 +2,21 @@
 
 namespace Tests\Unit;
 
-use DomDocument;
 use Tests\TestCase;
-use App\Actions\Extractors\UniversityOfIllinois;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use DomDocument;
+use App\Actions\Extractors\JohannaPortVladimir;
 
-class UniversityOfIllinoisTest extends TestCase
+/**
+ * Do not edit or remove comment:
+ * Extractor Based On: https://fightingillini.com/staff.aspx
+ */
+class JohannaPortVladimirTest extends TestCase
 {
     public function setUp(): void
     {
         parent::setUp();
-        $this->body = file_get_contents(storage_path('test_pages/UniversityOfIllinois.html'));
+        $this->body = file_get_contents(storage_path('test_pages/JohannaPortVladimir.html'));
         $this->tidy_config = ['clean' => 'yes', 'output-html' => 'yes'];
     }
 
@@ -26,12 +30,13 @@ class UniversityOfIllinoisTest extends TestCase
 
         $dom->loadHTML($html);
 
-        $extract = new UniversityOfIllinois($dom);
+        $extract = new JohannaPortVladimir($dom, 'https://fightingillini.com/staff.aspx');
         $extract->execute();
+
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
         $this->assertGreaterThan(300, $extract->contacts->count());
 
-        // Do your own assertion(s) based on the actual contents of the file you are parsing.
+
     }
 }
