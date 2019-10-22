@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="367cac74-a605-44ea-a755-7e773cbbe956" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/directory_spider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/directory_spider.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Extractors/BaseExtractor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Extractors/BaseExtractor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Actions/Extractors/STUB" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Extractors/STUB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Extractors/UniversityOfCaliforniaLosAngelesProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Extractors/UniversityOfCaliforniaLosAngelesProfile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/STUB" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/STUB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/UniversityOfCaliforniaLosAngelesProfileTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/UniversityOfCaliforniaLosAngelesProfileTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,6 +133,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/html2text/html2text" />
+      <path value="$PROJECT_DIR$/vendor/algo26-matthias/idna-convert" />
+      <path value="$PROJECT_DIR$/vendor/xrstf/ip-utils" />
+      <path value="$PROJECT_DIR$/vendor/webignition/absolute-url-deriver" />
+      <path value="$PROJECT_DIR$/vendor/webignition/uri" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Opb11W3HVFaI5VHSmbn99PKSoj" />
