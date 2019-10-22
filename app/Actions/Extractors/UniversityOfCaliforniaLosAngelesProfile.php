@@ -11,10 +11,12 @@ class UniversityOfCaliforniaLosAngelesProfile extends BaseExtractor
     public $contact;
     protected $dom;
 
-    public function __construct(DomDocument $dom)
+    public function __construct(DomDocument $dom, $url = null)
     {
         $this->contacts = collect([]);
         $this->dom = $dom;
+        $this->url = $url;
+        $this->fullyQualify();
     }
 
     public function execute()

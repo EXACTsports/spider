@@ -30,7 +30,7 @@ class STUBTest extends TestCase
 
         $dom->loadHTML($html);
 
-        $extract = new STUB($dom);
+        $extract = new STUB($dom, 'URL');
         $extract->execute();
 
 

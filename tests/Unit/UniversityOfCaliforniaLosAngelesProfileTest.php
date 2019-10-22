@@ -26,11 +26,11 @@ class UniversityOfCaliforniaLosAngelesProfileTest extends TestCase
 
         $dom->loadHTML($html);
 
-        $extract = new UniversityOfCaliforniaLosAngelesProfile($dom);
+        $extract = new UniversityOfCaliforniaLosAngelesProfile($dom, 'https://uclabruins.com/staff.aspx');
         $extract->execute();
 
         $this->assertInstanceOf('App\Models\DirectoryContact', $extract->contact);
         $this->assertGreaterThan(10000, strlen($extract->contact->bio)); // Don't do exact number because of variations in results of PHP Tidy cleanup
-        $this->assertEquals('/images/2018/6/20/COACH_Peters_1_1_of_1_.jpg', $extract->contact->image_url);
+        $this->assertEquals('https://uclabruins.com/images/2018/6/20/COACH_Peters_1_1_of_1_.jpg', $extract->contact->image_url);
     }
 }
