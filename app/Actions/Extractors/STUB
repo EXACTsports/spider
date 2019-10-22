@@ -11,7 +11,7 @@ use DomDocument;
  * Extractor Based On: URL
  */
 
-class STUB
+class STUB extends BaseExtractor
 {
     public $contacts;
     protected $dom;

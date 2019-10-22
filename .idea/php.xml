@@ -107,6 +107,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/html2text/html2text" />
+      <path value="$PROJECT_DIR$/vendor/algo26-matthias/idna-convert" />
+      <path value="$PROJECT_DIR$/vendor/xrstf/ip-utils" />
+      <path value="$PROJECT_DIR$/vendor/webignition/absolute-url-deriver" />
+      <path value="$PROJECT_DIR$/vendor/webignition/uri" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
