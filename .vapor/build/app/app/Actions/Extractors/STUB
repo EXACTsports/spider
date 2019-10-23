@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Actions\Extractors;
+
+use App\Models\Directory;
+use App\Models\DirectoryContact as Contact;
+use DomDocument;
+
+/**
+ * Do not edit or remove comment:
+ * Extractor Based On: URL
+ */
+
+class STUB extends BaseExtractor
+{
+    public $contacts;
+    protected $dom;
+
+    public function __construct(DomDocument $dom, $url = null)
+    {
+        $this->contacts = collect([]);
+        $this->dom = $dom;
+        $this->url = $url;
+        $this->fullyQualify();
+    }
+
+    public function execute()
+    {
+        $contacts = collect([]);
+        foreach ($this->dom->getElementsByTagName('tr') as $row) { // Replace with whatever tag encapsulates rows in this directory
+            $contact = new Contact;
+            // How many of these data points can you extract from the child elements of the row?
+            $contact->name = '';
+            $contact->email = '';
+            $contact->phone = '';
+            $contact->profile_url = '';
+            $contact->image_url = '';
+            $contact->bio = '';
+            $contacts->push($contact);
+        }
+
+        $this->contacts = $contacts;
+    }
+}

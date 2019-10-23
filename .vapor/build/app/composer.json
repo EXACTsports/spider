@@ -17,7 +17,6 @@
         "jenssegers/model": "^1.2",
         "laravel/framework": "^6",
         "laravel/tinker": "^1.0",
-        "laravel/vapor-core": "^2.1",
         "moontoast/math": "^1.1",
         "spatie/browsershot": "^3.32",
         "spatie/laravel-queueable-action": "^2.1",
