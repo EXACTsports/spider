@@ -13,8 +13,3 @@
 
 Route::get('/', App\Http\Controllers\Welcome::class);
 
-Route::group(['prefix' => 'directory'], function () {
-    Route::get('/{id}', App\Http\Controllers\Directory\Crawl::class);
-});
-
-Route::get('test_site', App\Http\Controllers\TestSite::class);

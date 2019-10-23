@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dca78e93622c42d6385293aacf5a6bab",
+    "content-hash": "c72e426e31a6d02bc5842aeb2ffe312c",
     "packages": [
         {
             "name": "algo26-matthias/idna-convert",
@@ -458,6 +458,79 @@
             "time": "2019-03-17T18:48:37+00:00"
         },
         {
+            "name": "exactsports/domains",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:EXACTsports/domains.git",
+                "reference": "be92821e24d22283ba0dc38764944ad1614296cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EXACTsports/domains/zipball/be92821e24d22283ba0dc38764944ad1614296cf",
+                "reference": "be92821e24d22283ba0dc38764944ad1614296cf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ifsnop/mysqldump-php": "^2.7",
+                "illuminate/support": "^5.8|^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Domains\\DomainsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "helpers/date.php"
+                ],
+                "psr-4": {
+                    "Domains\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Ed Grosvenor",
+                    "email": "ed.grosvenor@Exact.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Shared models divided into domains to be used across all our projects",
+            "homepage": "https://github.com/exactsports/domains",
+            "keywords": [
+                "Exact",
+                "domains"
+            ],
+            "support": {
+                "source": "https://github.com/EXACTsports/domains/tree/0.3.0",
+                "issues": "https://github.com/EXACTsports/domains/issues"
+            },
+            "time": "2019-10-17T17:47:34+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.2.1",
             "source": {
@@ -797,6 +870,61 @@
             ],
             "description": "Converts HTML to formatted plain text",
             "time": "2018-08-13T12:05:08+00:00"
+        },
+        {
+            "name": "ifsnop/mysqldump-php",
+            "version": "v2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ifsnop/mysqldump-php.git",
+                "reference": "30f07f4f0b0fdfcd74e6e57de933248d47f2dd61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ifsnop/mysqldump-php/zipball/30f07f4f0b0fdfcd74e6e57de933248d47f2dd61",
+                "reference": "30f07f4f0b0fdfcd74e6e57de933248d47f2dd61",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.36",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ifsnop\\": "src/Ifsnop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Diego Torres",
+                    "homepage": "https://github.com/ifsnop",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP version of mysqldump cli that comes with MySQL",
+            "homepage": "https://github.com/ifsnop/mysqldump-php",
+            "keywords": [
+                "PHP7",
+                "database",
+                "hhvm",
+                "mariadb",
+                "mysql",
+                "mysql-backup",
+                "mysqldump",
+                "pdo",
+                "php",
+                "php5",
+                "sql"
+            ],
+            "time": "2019-02-18T23:38:33+00:00"
         },
         {
             "name": "intervention/image",

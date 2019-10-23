@@ -12,6 +12,7 @@
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-tidy": "*",
+        "exactsports/domains": "^0.3.0",
         "fideloper/proxy": "^4.0",
         "html2text/html2text": "^4.2",
         "jenssegers/model": "^1.2",
@@ -60,6 +61,12 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/exactsports/domains"
+        }
+    ],
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
