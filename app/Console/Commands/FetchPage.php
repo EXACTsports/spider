@@ -16,7 +16,6 @@ class FetchPage extends Command
     protected $signature = 'fetch:page {url}';
     protected $url;
 
-
     /**
      * Create a new command instance.
      *

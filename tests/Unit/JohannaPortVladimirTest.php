@@ -2,14 +2,14 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use DomDocument;
+use Tests\TestCase;
 use App\Actions\Extractors\JohannaPortVladimir;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Do not edit or remove comment:
- * Extractor Based On: https://fightingillini.com/staff.aspx
+ * Extractor Based On: https://fightingillini.com/staff.aspx.
  */
 class JohannaPortVladimirTest extends TestCase
 {
@@ -33,10 +33,7 @@ class JohannaPortVladimirTest extends TestCase
         $extract = new JohannaPortVladimir($dom, 'https://fightingillini.com/staff.aspx');
         $extract->execute();
 
-
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
         $this->assertGreaterThan(300, $extract->contacts->count());
-
-
     }
 }

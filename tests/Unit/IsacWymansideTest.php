@@ -2,14 +2,14 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use DomDocument;
+use Tests\TestCase;
 use App\Actions\Extractors\IsacWymanside;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Do not edit or remove comment:
- * Extractor Based On: https://uclabruins.com/staff.aspx
+ * Extractor Based On: https://uclabruins.com/staff.aspx.
  */
 class IsacWymansideTest extends TestCase
 {
@@ -36,7 +36,5 @@ class IsacWymansideTest extends TestCase
         $this->assertInstanceOf('Illuminate\Support\Collection', $extract->contacts);
         $this->assertEquals(268, $extract->contacts->where('email', '<>', '')->count());
         $this->assertEquals(40, count($extract->meta['team_phones']));
-
-
     }
 }

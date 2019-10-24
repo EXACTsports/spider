@@ -12,4 +12,3 @@
 */
 
 Route::get('/', App\Http\Controllers\Welcome::class);
-
