@@ -2,6 +2,7 @@
 
 namespace App\Actions\Extractors;
 
+use App\Actions\FullyQualify;
 use App\Models\Directory;
 use App\Models\DirectoryContact as Contact;
 use DomDocument;
@@ -21,7 +22,7 @@ class JohannaPortVladimir extends BaseExtractor
         $this->contacts = collect([]);
         $this->dom = $dom;
         $this->url = $url;
-        $this->fullyQualify();
+        FullyQualify::transform($dom, $url);
     }
 
     public function execute()

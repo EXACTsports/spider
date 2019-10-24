@@ -50,38 +50,4 @@ class BaseExtractor
     {
         return strip_tags($string, '<p>');
     }
-
-    public function fullyQualify()
-    {
-        if (is_null($this->url)) {
-            return;
-        }
-        $up = parse_url($this->url);
-
-
-
-        $scheme = $up['scheme'] ?? 'https';
-        $this->base_url = $scheme . '://' . $up['host'];
-
-
-        $links = $this->dom->getElementsByTagName('a');
-
-        foreach ($links as $link) {
-            $href = $link->getAttribute('href');
-
-            if (!preg_match('/mailto:/', $href) && !preg_match('/tel:/', $href)) {
-                $link->setAttribute('href', AbsoluteUrlDeriver::derive(new Uri($this->base_url), new Uri($href)));
-            }
-        }
-
-        $images = $this->dom->getElementsByTagName('img');
-
-        foreach ($images as $image) {
-            $src = $image->getAttribute('src');
-
-            if (!preg_match('/data:/', $src)) {
-                $image->setAttribute('src', AbsoluteUrlDeriver::derive(new Uri($this->base_url), new Uri($src)));
-            }
-        }
-    }
 }

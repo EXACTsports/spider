@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\ListSidearmDirectories::class,
+        Commands\MakeExtractor::class,
+        Commands\FetchPage::class
     ];
 
     /**
