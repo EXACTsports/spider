@@ -3,8 +3,8 @@
 namespace App\Actions\Extractors;
 
 use DOMElement;
-use webignition\AbsoluteUrlDeriver\AbsoluteUrlDeriver;
 use webignition\Uri\Uri;
+use webignition\AbsoluteUrlDeriver\AbsoluteUrlDeriver;
 
 class BaseExtractor
 {

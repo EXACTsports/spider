@@ -39,9 +39,9 @@ class MakeExtractor extends Command
      */
     public function handle(): void
     {
-        if (!$this->confirm('This is a destructive command that will wipe out any work you have not committed and pushed. Are you sure you are ready to do this?')) {
+        if (! $this->confirm('This is a destructive command that will wipe out any work you have not committed and pushed. Are you sure you are ready to do this?')) {
             exit(0);
-    }
+        }
         $url = $this->ask('Paste the URL of the page you want to use as a test for your extractor here:');
 
         $extractor = new CreateExtractor($url);

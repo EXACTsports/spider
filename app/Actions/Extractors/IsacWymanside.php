@@ -2,16 +2,15 @@
 
 namespace App\Actions\Extractors;
 
-use App\Actions\FullyQualify;
-use App\Models\Directory;
-use App\Models\DirectoryContact as Contact;
 use DomDocument;
+use App\Models\Directory;
+use App\Actions\FullyQualify;
+use App\Models\DirectoryContact as Contact;
 
 /**
  * Do not edit or remove comment:
- * Extractor Based On: https://uclabruins.com/staff.aspx
+ * Extractor Based On: https://uclabruins.com/staff.aspx.
  */
-
 class IsacWymanside extends BaseExtractor
 {
     public $contacts;

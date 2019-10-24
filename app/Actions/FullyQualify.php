@@ -3,8 +3,8 @@
 namespace App\Actions;
 
 use DOMDocument;
-use webignition\AbsoluteUrlDeriver\AbsoluteUrlDeriver;
 use webignition\Uri\Uri;
+use webignition\AbsoluteUrlDeriver\AbsoluteUrlDeriver;
 
 class FullyQualify
 {
@@ -15,16 +15,13 @@ class FullyQualify
         }
         $up = parse_url($url);
 
-
-
         $scheme = $up['scheme'] ?? 'https';
-        $base_url = $scheme . '://' . $up['host'];
-
+        $base_url = $scheme.'://'.$up['host'];
 
         foreach ($dom->getElementsByTagName('a') as $link) {
             $href = $link->getAttribute('href');
 
-            if (!preg_match('/mailto:/', $href) && !preg_match('/tel:/', $href)) {
+            if (! preg_match('/mailto:/', $href) && ! preg_match('/tel:/', $href)) {
                 $link->setAttribute('href', AbsoluteUrlDeriver::derive(new Uri($base_url), new Uri($href)));
             }
         }
@@ -32,7 +29,7 @@ class FullyQualify
         foreach ($links = $dom->getElementsByTagName('link') as $link) {
             $href = $link->getAttribute('href');
 
-            if (!preg_match('/mailto:/', $href) && !preg_match('/tel:/', $href)) {
+            if (! preg_match('/mailto:/', $href) && ! preg_match('/tel:/', $href)) {
                 $link->setAttribute('href', AbsoluteUrlDeriver::derive(new Uri($base_url), new Uri($href)));
             }
         }
@@ -40,7 +37,7 @@ class FullyQualify
         foreach ($dom->getElementsByTagName('img') as $image) {
             $src = $image->getAttribute('src');
 
-            if (!preg_match('/data:/', $src)) {
+            if (! preg_match('/data:/', $src)) {
                 $image->setAttribute('src', AbsoluteUrlDeriver::derive(new Uri($base_url), new Uri($src)));
             }
         }

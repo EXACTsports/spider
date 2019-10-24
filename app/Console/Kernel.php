@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\MakeExtractor::class,
-        Commands\FetchPage::class
+        Commands\FetchPage::class,
     ];
 
     /**
