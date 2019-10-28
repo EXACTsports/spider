@@ -24,7 +24,7 @@ class FetchPage extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->url = $this->argument('url');
+        //$this->url = $this->argument('url');
     }
 
     /**
