@@ -2,40 +2,74 @@
 
 namespace App\Actions;
 
-use App\Models\Directory;
+use Domains\Colleges\Models\Directory;
+use Domains\Colleges\Models\DirectoryScrape;
+use DOMDocument;
+use Illuminate\Support\Str;
 use Spatie\Browsershot\Browsershot;
+use Spatie\Browsershot\Exceptions\CouldNotTakeBrowsershot;
 use Spatie\QueueableAction\QueueableAction;
 
 class CrawlDirectory
 {
-    protected $id;
-    protected $delay;
-    protected $max_depth;
-    protected $max_pages;
+    protected $directory;
+    protected $uuid;
+    protected $pdf_path;
+    protected $html_path;
 
     use QueueableAction;
 
-    public function __construct($id, $delay = 0, $max_depth = 0, $max_pages = 0)
+    public function __construct(Directory $directory)
     {
-        $this->id = $id;
+        $this->directory = $directory;
+        $this->uuid = Str::orderedUuid();
+        $this->pdf_path = storage_path('pdf/' . (string)$this->uuid . '.pdf');
+        $this->html_path = storage_path('html/' . (string)$this->uuid . '.html');
     }
 
-    public function execute()
+    public function execute(): void
     {
-        $directory = Directory::findOrFail($this->id);
 
-        $shot = $directory->meta['shot_method'] ?? 'shot';
 
-        $html = self::$shot($directory->url);
+        $html = $this->fetchPage();
 
-        return $html;
+
+        Browsershot::html($html)->savePdf($this->pdf_path);
+
+        $dom = new DOMDocument;
+
+        libxml_use_internal_errors(true);
+
+        $dom->loadHTML($html);
+
+        FullyQualify::transform($dom, $this->directory->url);
+
+        $html = $dom->saveHTML();
+
+        $matches = [];
+        preg_match_all('/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/i', $html, $matches);
+
+        DirectoryScrape::create([
+            'directory_id' => $this->directory->id,
+            'uuid' => Str::orderedUuid(),
+            'email_count' => sizeof(array_unique($matches[0]))
+        ]);
     }
 
-    private static function shot($url)
+    public function setPdfPath($path): void
     {
-        $html = Browsershot::url($url)->bodyHtml();
-        Browsershot::html($html)->savePdf(storage_path('pdf/'.md5($url).'.pdf'));
-
-        return $html;
+        $this->pdf_path = $path;
     }
+
+    public function setHtmlPath($path): void
+    {
+        $this->html_path = $path;
+    }
+
+    public function fetchPage()
+    {
+        return Browsershot::url($this->directory->$url)->bodyHtml();
+    }
+
 }
+

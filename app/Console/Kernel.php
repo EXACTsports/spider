@@ -15,6 +15,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\MakeExtractor::class,
         Commands\FetchPage::class,
+        Commands\ImportValidator::class,
+        Commands\PopulateCollegeLookup::class,
+        Commands\ScrapeDirectories::class,
+        Commands\ListBadDirectories::class,
     ];
 
     /**
